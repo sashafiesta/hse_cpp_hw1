@@ -123,10 +123,12 @@ void LongNumber::set_precision(size_t target) {
         return;
     auto head = numbers.back();
     numbers.pop_back();
+    std::reverse(numbers.begin(), numbers.end());
     while (numbers.size() > target)
         numbers.pop_back();
     while (numbers.size() < target)
         numbers.push_back(0);
+    std::reverse(numbers.begin(), numbers.end());
     numbers.push_back(head);
     precision = target;
 }
